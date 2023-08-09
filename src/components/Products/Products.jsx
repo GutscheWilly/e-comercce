@@ -8,16 +8,18 @@ function Products() {
     const [products, setProducts] = useState([]);
 
     useEffect( () => {
-        fetchProducts('computador').then( product => 
-            setProducts(product)
+        fetchProducts('promoção').then( response => 
+            setProducts(response)
         );
     }, []);
 
-    console.log(products);
-
     return (
         <section className="products container">
-            <ProductCard />
+            {
+                products.map( product => 
+                    <ProductCard key={ product.id } product={ product } />
+                )
+            }
         </section>
     );
 }
