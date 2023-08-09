@@ -15,11 +15,7 @@ function Products() {
 
     return (
         <section className="products container">
-            {
-                products.map( product => 
-                    <ProductCard key={ product.id } product={ product } />
-                )
-            }
+            { products.map( product => <ProductCard key={ product.id } product={ product } />) }
         </section>
     );
 }
