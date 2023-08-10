@@ -3,11 +3,14 @@ import AppContext from './AppContext';
 import propTypes from 'prop-types';
 
 function Provider({ children }) {
-    const [name, setName] = useState('willy');
+    const [products, setProducts] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
 
     const value = {
-        name,
-        setName
+        products, 
+        setProducts,
+        isLoading, 
+        setIsLoading
     };
 
     return (

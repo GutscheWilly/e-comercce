@@ -1,20 +1,29 @@
 import React, { useContext, useState } from 'react';
 import { FaSearch } from 'react-icons/fa';
 import AppContext from '../../context/AppContext';
+import fetchProducts from '../../api/fetchProducts';
 
 import './SearchBar.css';
 
 function SearchBar() {
     const [searchInput, setSearchInput] = useState('');
 
-    function handleSearch(event) {
-        event.preventDefault();
-        alert(name);
-    }
-
     const {
-        name
+        setProducts,
+        setIsLoading
     } = useContext(AppContext);
+
+    async function handleSearch(event) {
+        event.preventDefault();
+
+        setIsLoading(true);
+
+        fetchProducts(searchInput).then( response => {
+            setProducts(response);
+            setSearchInput('');
+            setIsLoading(false);
+        });
+    }
 
     return (
         <form className="search__bar" onSubmit={ handleSearch }>
