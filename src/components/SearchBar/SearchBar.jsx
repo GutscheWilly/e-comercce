@@ -1,13 +1,23 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { FaSearch } from 'react-icons/fa';
+import AppContext from '../../context/AppContext';
 
 import './SearchBar.css';
 
 function SearchBar() {
     const [searchInput, setSearchInput] = useState('');
 
+    function handleSearch(event) {
+        event.preventDefault();
+        alert(name);
+    }
+
+    const {
+        name
+    } = useContext(AppContext);
+
     return (
-        <form className="search__bar">
+        <form className="search__bar" onSubmit={ handleSearch }>
             <input 
                 type="search"
                 value={ searchInput }

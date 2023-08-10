@@ -23,11 +23,10 @@ function Products() {
     }
 
     return (
-        (isLoading ? <Loading /> : 
+        isLoading ? <Loading /> : 
             <section className="products container">
                 { getProductCards() }
             </section>
-        )
     );
 }
 
