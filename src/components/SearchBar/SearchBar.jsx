@@ -13,7 +13,7 @@ function SearchBar() {
         setIsLoading
     } = useContext(AppContext);
 
-    async function handleSearch(event) {
+    function handleSearch(event) {
         event.preventDefault();
 
         setIsLoading(true);

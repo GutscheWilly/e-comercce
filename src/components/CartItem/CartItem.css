@@ -1,0 +1,39 @@
+.cart__item {
+    display: flex;
+    align-items: flex-start;
+    border-bottom: 1px solid grey;
+    padding-bottom: 16px;
+    margin-bottom: 16px;
+    position: relative;
+}
+
+.item__content {
+    padding: 0 36px 0 12px;
+}
+
+.item__img {
+    width: 80px;
+}
+
+.item__title {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.7);
+    margin-bottom: 8px;
+}
+
+.item__price {
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.button__remove-item {
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: red;
+    font-size: 1.2rem;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
