@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { BiCartAdd } from 'react-icons/bi';
 import propTypes from 'prop-types';
 
 import './ProductCard.css';
 import formatCurrency from '../../utils/formatCurrency';
+import AppContext from '../../context/AppContext';
 
 function ProductCard({ product }) {
     const {
@@ -12,8 +13,17 @@ function ProductCard({ product }) {
         title
     } = product;
 
+    const {
+        selectedItems,
+        setSelectedItems
+    } = useContext(AppContext);
+
     function getHighQualityThumbnail() {
         return thumbnail.replace(/\w\.jpg/gi, 'W.jpg');
+    }
+
+    function addCart() {
+        setSelectedItems([...selectedItems, product]);
     }
 
     return (
@@ -29,7 +39,7 @@ function ProductCard({ product }) {
                 <h2 className="card__title">{ title }</h2>
             </div>
 
-            <button type="button" className="button__add-cart">
+            <button type="button" className="button__add-cart" onClick={ addCart }>
                 <BiCartAdd />
             </button>
         </section>
