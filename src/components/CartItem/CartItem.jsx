@@ -1,16 +1,27 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { BsCartX } from 'react-icons/bs';
 import propTypes from 'prop-types';
 
 import './CartItem.css';
 import formatCurrency from '../../utils/formatCurrency';
+import AppContext from '../../context/AppContext';
 
 function CartItem({ item }) {
     const {
         thumbnail,
         title,
-        price
+        price,
+        id
     } = item;
+
+    const {
+        selectedItems,
+        setSelectedItems
+    } = useContext(AppContext);
+
+    function removeItem() {
+        setSelectedItems(selectedItems.filter( item => item.id !== id ));
+    }
 
     return (
         <section className="cart__item">
@@ -28,6 +39,7 @@ function CartItem({ item }) {
                 <button 
                     type="button"
                     className="button__remove-item"
+                    onClick={ removeItem }
                 >
                     <BsCartX />
                 </button>
@@ -43,7 +55,8 @@ CartItem.propTypes = {
         {
             thumbnail: String,
             price: String,
-            title: String
+            title: String,
+            id: String
         }
     )
 }.isRequired;

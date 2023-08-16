@@ -3,6 +3,7 @@ import CartItem from '../CartItem/CartItem';
 
 import './Cart.css';
 import AppContext from '../../context/AppContext';
+import formatCurrency from '../../utils/formatCurrency';
 
 function Cart() {
     const {
@@ -15,6 +16,12 @@ function Cart() {
         );
     }
 
+    function getTotalPrice() {
+        return selectedItems.reduce( (total, { price }) => 
+            total += price
+        , 0);
+    }
+
     return (
         <section className="cart">
             <div className="cart__items">
@@ -22,7 +29,7 @@ function Cart() {
             </div>
 
             <div className="cart__info">
-                Info
+                Total: { formatCurrency(getTotalPrice(), 'BRL') }
             </div>
         </section>
     );
