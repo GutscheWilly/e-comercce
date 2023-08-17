@@ -7,7 +7,8 @@ import formatCurrency from '../../utils/formatCurrency';
 
 function Cart() {
     const {
-        selectedItems
+        selectedItems,
+        isCartActive
     } = useContext(AppContext);
 
     function getCartItems() {
@@ -23,7 +24,7 @@ function Cart() {
     }
 
     return (
-        <section className="cart">
+        <section className={ `cart ${ isCartActive ? 'cart__active' : '' }` }>
             <div className="cart__items">
                 { getCartItems() }
             </div>

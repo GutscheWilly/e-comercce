@@ -6,11 +6,21 @@ import AppContext from '../../context/AppContext';
 
 function CartButton() {
     const {
-        selectedItems
+        selectedItems,
+        isCartActive,
+        setIsCartActive
     } = useContext(AppContext);
 
+    function changeCartVisibility() {
+        setIsCartActive(!isCartActive);
+    }
+
     return (
-        <button type="button" className="cart__button">
+        <button 
+            type="button" 
+            className="cart__button"
+            onClick={ changeCartVisibility }
+        >
             <PiShoppingCartBold />
 
             <span className="cart__status">

@@ -6,6 +6,7 @@ function Provider({ children }) {
     const [products, setProducts] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [selectedItems, setSelectedItems] = useState([]);
+    const [isCartActive, setIsCartActive] = useState(false);
 
     const value = {
         products, 
@@ -13,7 +14,9 @@ function Provider({ children }) {
         isLoading, 
         setIsLoading,
         selectedItems,
-        setSelectedItems
+        setSelectedItems,
+        isCartActive,
+        setIsCartActive
     };
 
     return (
