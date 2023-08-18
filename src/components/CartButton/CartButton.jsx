@@ -15,6 +15,10 @@ function CartButton() {
         setIsCartActive(!isCartActive);
     }
 
+    function isThereCartItem() {
+        return selectedItems.length > 0;
+    }
+
     return (
         <button 
             type="button" 
@@ -23,9 +27,7 @@ function CartButton() {
         >
             <PiShoppingCartBold />
 
-            <span className="cart__status">
-                { selectedItems.length }
-            </span>
+            { isThereCartItem() ? <span className="cart__status">{ selectedItems.length }</span> : '' }
         </button>
     );
 }

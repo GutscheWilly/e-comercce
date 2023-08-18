@@ -4,6 +4,7 @@ import CartItem from '../CartItem/CartItem';
 import './Cart.css';
 import AppContext from '../../context/AppContext';
 import formatCurrency from '../../utils/formatCurrency';
+import EmptyCart from '../EmptyCart/EmptyCart';
 
 function Cart() {
     const {
@@ -23,11 +24,13 @@ function Cart() {
         , 0);
     }
 
+    function isCartEmpty() {
+        return selectedItems.length === 0;
+    }
+
     return (
         <section className={ `cart ${ isCartActive ? 'cart__active' : '' }` }>
-            <div className="cart__items">
-                { getCartItems() }
-            </div>
+            { isCartEmpty() ? <EmptyCart /> : <div className="cart__items">{ getCartItems() }</div> }
 
             <div className="cart__info">
                 Total: { formatCurrency(getTotalPrice(), 'BRL') }
