@@ -9,7 +9,6 @@ function Header() {
         <header className="header">
             <div className="container">
                 <SearchBar />
-
                 <CartButton />
             </div>
         </header>

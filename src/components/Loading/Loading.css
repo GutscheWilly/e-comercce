@@ -1,0 +1,16 @@
+.loading {
+    font-size: 2rem;
+    margin: 180px auto 0;
+    animation: loadingSpin 1s linear infinite;
+    width: 100%;
+}
+
+@keyframes loadingSpin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}

@@ -1,0 +1,19 @@
+.empty__cart {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 50% 0;
+    align-items: center;
+    justify-content: center;
+}
+
+.empty__cart-message {
+    font-size: 1.4em;
+    font-weight: 600;
+}
+
+.empty__cart-icon {
+    font-size: 2em;
+    font-weight: 600;
+    padding: 4% 0;
+}

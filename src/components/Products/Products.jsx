@@ -1,22 +1,39 @@
-import React, { useState, useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import fetchProducts from '../../api/fetchProducts';
 
 import './Products.css';
 import ProductCard from '../ProductCard/ProductCard';
+import Loading from '../Loading/Loading';
+import AppContext from '../../context/AppContext';
 
 function Products() {
-    const [products, setProducts] = useState([]);
+    const {
+        products, 
+        setProducts,
+        isLoading, 
+        setIsLoading
+    } = useContext(AppContext);
+
+    function getProductCards() {
+        return products.map( product => 
+            <ProductCard key={ product.id } product={ product } /> 
+        );
+    }
 
     useEffect( () => {
-        fetchProducts('promoção').then( response => 
-            setProducts(response)
-        );
+        const defaultQuery = 'celular';
+
+        fetchProducts(defaultQuery).then( response => {
+            setProducts(response);
+            setIsLoading(false);
+        });
     }, []);
 
     return (
-        <section className="products container">
-            { products.map( product => <ProductCard key={ product.id } product={ product } />) }
-        </section>
+        isLoading ? <Loading /> : 
+            <section className="products container">
+                { getProductCards() }
+            </section>
     );
 }
 
